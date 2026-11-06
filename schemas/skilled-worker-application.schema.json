@@ -1,0 +1,1459 @@
+{
+  "$id": "https://example.invalid/schemas/skilled-worker-application.schema.json",
+  "title": "UK Skilled Worker visa application input",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "applicationType": {
+      "default": "skilled-worker",
+      "type": "string",
+      "const": "skilled-worker"
+    },
+    "clientReference": {
+      "description": "Your own case/matter reference; echoed back in the status report",
+      "type": "string"
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "applyingFrom": {
+          "type": "string",
+          "enum": [
+            "outside-uk",
+            "inside-uk"
+          ],
+          "description": "outside-uk: entry clearance application. inside-uk: switching or extending"
+        },
+        "countryOfApplication": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}$",
+          "description": "Country the applicant is physically in when applying (determines the visa application centre)"
+        },
+        "applicantIsMainApplicant": {
+          "default": true,
+          "type": "boolean",
+          "const": true
+        },
+        "hasDependantsApplying": {
+          "default": false,
+          "description": "Partner or children applying at the same time",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "applyingFrom",
+        "countryOfApplication"
+      ],
+      "description": "Which flavour of the Skilled Worker application to start"
+    },
+    "account": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+          "description": "Email used to create the UKVI application account and receive correspondence"
+        },
+        "password": {
+          "type": "string",
+          "minLength": 8,
+          "description": "Password for the application account. Never logged; passed to the browser via a selector, not to the model"
+        },
+        "emailVerificationCode": {
+          "description": "One-time verification code if you already have it; otherwise supply a resolver at run time",
+          "type": "string"
+        },
+        "existingApplicationReference": {
+          "description": "GWF reference of an in-progress application to resume instead of starting a new one",
+          "type": "string",
+          "pattern": "^GWF\\d{9}$"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ],
+      "description": "Credentials for the UKVI online account"
+    },
+    "applicant": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "givenNames": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Given name(s) exactly as shown in the passport"
+            },
+            "familyName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Family name exactly as shown in the passport"
+            }
+          },
+          "required": [
+            "givenNames",
+            "familyName"
+          ]
+        },
+        "hasOtherNames": {
+          "default": false,
+          "type": "boolean"
+        },
+        "otherNames": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the name was used, e.g. maiden name, name at birth"
+              }
+            },
+            "required": [
+              "name",
+              "reason"
+            ]
+          }
+        },
+        "sex": {
+          "type": "string",
+          "enum": [
+            "male",
+            "female",
+            "unspecified"
+          ]
+        },
+        "relationshipStatus": {
+          "type": "string",
+          "enum": [
+            "single",
+            "married",
+            "civil-partnership",
+            "unmarried-partner",
+            "divorced",
+            "dissolved-civil-partnership",
+            "separated",
+            "widowed"
+          ]
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+        },
+        "countryOfBirth": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+        },
+        "placeOfBirth": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Town or city of birth"
+        },
+        "nationality": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2,
+          "pattern": "^[A-Z]{2}$",
+          "description": "Nationality shown on the passport used to apply"
+        },
+        "hasOtherNationalities": {
+          "default": false,
+          "type": "boolean"
+        },
+        "otherNationalities": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Z]{2}$",
+                "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+              },
+              "heldSince": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "howAcquired": {
+                "type": "string",
+                "enum": [
+                  "birth",
+                  "descent",
+                  "naturalisation",
+                  "marriage",
+                  "other"
+                ]
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        },
+        "nationalIdentityCard": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "minLength": 1
+            },
+            "issuingAuthority": {
+              "type": "string",
+              "minLength": 1
+            },
+            "issueDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "expiryDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            }
+          },
+          "required": [
+            "number",
+            "issuingAuthority",
+            "issueDate"
+          ]
+        },
+        "passport": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "minLength": 1
+            },
+            "issuingAuthority": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Issuing authority or place of issue as printed in the passport"
+            },
+            "issueDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "expiryDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "countryOfIssue": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            },
+            "isBiometric": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "number",
+            "issuingAuthority",
+            "issueDate",
+            "expiryDate",
+            "countryOfIssue"
+          ],
+          "description": "Current passport used for travel"
+        }
+      },
+      "required": [
+        "name",
+        "sex",
+        "relationshipStatus",
+        "dateOfBirth",
+        "countryOfBirth",
+        "placeOfBirth",
+        "nationality",
+        "passport"
+      ],
+      "description": "Identity details of the main applicant"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "telephone": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "minLength": 5,
+              "description": "International format including country code, e.g. +91 98765 43210"
+            },
+            "type": {
+              "default": "mobile",
+              "type": "string",
+              "enum": [
+                "mobile",
+                "home",
+                "work"
+              ]
+            },
+            "usedIn": {
+              "default": "outside-uk",
+              "type": "string",
+              "enum": [
+                "uk",
+                "outside-uk",
+                "both"
+              ]
+            }
+          },
+          "required": [
+            "number"
+          ]
+        },
+        "additionalTelephone": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "minLength": 5
+            },
+            "type": {
+              "default": "mobile",
+              "type": "string",
+              "enum": [
+                "mobile",
+                "home",
+                "work"
+              ]
+            }
+          },
+          "required": [
+            "number"
+          ]
+        },
+        "canBeContactedByTelephone": {
+          "default": true,
+          "type": "boolean"
+        },
+        "homeAddress": {
+          "type": "object",
+          "properties": {
+            "line1": {
+              "type": "string",
+              "minLength": 1,
+              "description": "First line of the address"
+            },
+            "line2": {
+              "type": "string"
+            },
+            "line3": {
+              "type": "string"
+            },
+            "townOrCity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "provinceOrState": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            }
+          },
+          "required": [
+            "line1",
+            "townOrCity",
+            "country"
+          ],
+          "description": "Postal address"
+        },
+        "livedAtHomeAddressSince": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "When the applicant started living at the home address"
+        },
+        "homeAddressOwnership": {
+          "type": "string",
+          "enum": [
+            "own",
+            "rent",
+            "other"
+          ]
+        },
+        "correspondenceAddressIsHomeAddress": {
+          "default": true,
+          "type": "boolean"
+        },
+        "correspondenceAddress": {
+          "type": "object",
+          "properties": {
+            "line1": {
+              "type": "string",
+              "minLength": 1,
+              "description": "First line of the address"
+            },
+            "line2": {
+              "type": "string"
+            },
+            "line3": {
+              "type": "string"
+            },
+            "townOrCity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "provinceOrState": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            }
+          },
+          "required": [
+            "line1",
+            "townOrCity",
+            "country"
+          ],
+          "description": "Postal address"
+        },
+        "preferredContactMethod": {
+          "default": "email",
+          "type": "string",
+          "enum": [
+            "email",
+            "post"
+          ]
+        }
+      },
+      "required": [
+        "telephone",
+        "homeAddress",
+        "livedAtHomeAddressSince",
+        "homeAddressOwnership"
+      ],
+      "description": "How the Home Office can reach the applicant"
+    },
+    "family": {
+      "type": "object",
+      "properties": {
+        "parents": {
+          "minItems": 2,
+          "maxItems": 2,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relationship": {
+                "type": "string",
+                "enum": [
+                  "mother",
+                  "father"
+                ]
+              },
+              "detailsKnown": {
+                "default": true,
+                "type": "boolean"
+              },
+              "name": {
+                "type": "object",
+                "properties": {
+                  "givenNames": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Given name(s) exactly as shown in the passport"
+                  },
+                  "familyName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Family name exactly as shown in the passport"
+                  }
+                },
+                "required": [
+                  "givenNames",
+                  "familyName"
+                ]
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "nationality": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Z]{2}$",
+                "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+              },
+              "hadSameNationalityAtBirth": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "relationship"
+            ]
+          },
+          "description": "Mother and father, even if deceased or unknown"
+        },
+        "partner": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "givenNames": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Given name(s) exactly as shown in the passport"
+                },
+                "familyName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Family name exactly as shown in the passport"
+                }
+              },
+              "required": [
+                "givenNames",
+                "familyName"
+              ]
+            },
+            "dateOfBirth": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "nationality": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            },
+            "livesWithApplicant": {
+              "type": "boolean"
+            },
+            "isApplyingToo": {
+              "default": false,
+              "type": "boolean"
+            },
+            "passportNumber": {
+              "type": "string"
+            },
+            "relationshipStartDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            }
+          },
+          "required": [
+            "name",
+            "dateOfBirth",
+            "nationality",
+            "livesWithApplicant"
+          ]
+        },
+        "children": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "object",
+                "properties": {
+                  "givenNames": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Given name(s) exactly as shown in the passport"
+                  },
+                  "familyName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Family name exactly as shown in the passport"
+                  }
+                },
+                "required": [
+                  "givenNames",
+                  "familyName"
+                ]
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "nationality": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Z]{2}$",
+                "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+              },
+              "livesWithApplicant": {
+                "type": "boolean"
+              },
+              "isApplyingToo": {
+                "default": false,
+                "type": "boolean"
+              },
+              "relationshipToApplicant": {
+                "default": "child",
+                "type": "string",
+                "enum": [
+                  "child",
+                  "step-child",
+                  "adopted-child"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "dateOfBirth",
+              "nationality",
+              "livesWithApplicant"
+            ]
+          }
+        }
+      },
+      "required": [
+        "parents"
+      ],
+      "description": "Family members the form asks about"
+    },
+    "travelHistory": {
+      "type": "object",
+      "properties": {
+        "previousUkAddresses": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "object",
+                "properties": {
+                  "line1": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "First line of the address"
+                  },
+                  "line2": {
+                    "type": "string"
+                  },
+                  "line3": {
+                    "type": "string"
+                  },
+                  "townOrCity": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "provinceOrState": {
+                    "type": "string"
+                  },
+                  "postalCode": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 2,
+                    "pattern": "^[A-Z]{2}$",
+                    "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+                  }
+                },
+                "required": [
+                  "line1",
+                  "townOrCity",
+                  "country"
+                ],
+                "description": "Postal address"
+              },
+              "from": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              }
+            },
+            "required": [
+              "address",
+              "from",
+              "to"
+            ]
+          }
+        },
+        "hasVisitedUkInLast10Years": {
+          "default": false,
+          "type": "boolean"
+        },
+        "ukVisits": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "description": "e.g. tourism, business, study"
+              },
+              "arrivalDate": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "departureDate": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              }
+            },
+            "required": [
+              "reason",
+              "arrivalDate",
+              "departureDate"
+            ]
+          }
+        },
+        "hasBeenIssuedUkVisaBefore": {
+          "default": false,
+          "type": "boolean"
+        },
+        "previousUkVisaDetails": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "issueDate": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "referenceNumber": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "issueDate"
+            ]
+          }
+        },
+        "hasUkNationalInsuranceNumber": {
+          "default": false,
+          "type": "boolean"
+        },
+        "nationalInsuranceNumber": {
+          "type": "string"
+        },
+        "hasVisitedOtherCountriesInLast10Years": {
+          "default": false,
+          "type": "boolean"
+        },
+        "otherCountryVisits": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Z]{2}$",
+                "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "arrivalDate": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "departureDate": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              }
+            },
+            "required": [
+              "country",
+              "reason",
+              "arrivalDate",
+              "departureDate"
+            ]
+          }
+        },
+        "hasAppliedForUkVisaAndBeenRefused": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenRefusedVisaForAnyCountry": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenRefusedEntryToAnyCountry": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenDeportedOrRemoved": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasOverstayedOrBreachedConditions": {
+          "default": false,
+          "type": "boolean"
+        },
+        "immigrationHistoryExplanation": {
+          "description": "Required if any of the refusal/deportation/breach answers is true",
+          "type": "string"
+        }
+      },
+      "description": "Addresses, travel and immigration history for the last 10 years"
+    },
+    "characterAndConduct": {
+      "type": "object",
+      "properties": {
+        "hasCriminalConvictions": {
+          "default": false,
+          "type": "boolean"
+        },
+        "convictions": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "offence": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2,
+                "pattern": "^[A-Z]{2}$",
+                "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+              },
+              "sentence": {
+                "type": "string"
+              },
+              "isSpent": {
+                "default": false,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "offence",
+              "country",
+              "date",
+              "sentence"
+            ]
+          }
+        },
+        "hasPendingProsecutions": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenInvolvedInWarCrimes": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenInvolvedInTerrorism": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasExpressedExtremistViews": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasBeenInvolvedInOrganisedCrime": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasWorkedForSecurityOrIntelligenceServices": {
+          "default": false,
+          "type": "boolean"
+        },
+        "hasOtherInformationToDeclare": {
+          "default": false,
+          "type": "boolean"
+        },
+        "explanation": {
+          "type": "string"
+        }
+      },
+      "description": "Good-character declarations. All default to false; set true and explain where applicable"
+    },
+    "sponsorAndJob": {
+      "type": "object",
+      "properties": {
+        "certificateOfSponsorship": {
+          "type": "object",
+          "properties": {
+            "referenceNumber": {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{11}$",
+              "description": "Certificate of Sponsorship (CoS) reference number from the sponsor"
+            },
+            "issueDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            }
+          },
+          "required": [
+            "referenceNumber"
+          ]
+        },
+        "sponsor": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Legal name of the sponsoring employer"
+            },
+            "licenceNumber": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Sponsor licence number"
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "line1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "First line of the address"
+                },
+                "line2": {
+                  "type": "string"
+                },
+                "line3": {
+                  "type": "string"
+                },
+                "townOrCity": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "provinceOrState": {
+                  "type": "string"
+                },
+                "postalCode": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2,
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+                }
+              },
+              "required": [
+                "line1",
+                "townOrCity",
+                "country"
+              ],
+              "description": "Postal address"
+            },
+            "contactName": {
+              "type": "string"
+            },
+            "contactTelephone": {
+              "type": "string"
+            },
+            "contactEmail": {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            }
+          },
+          "required": [
+            "name",
+            "licenceNumber",
+            "address"
+          ]
+        },
+        "job": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "socCode": {
+              "type": "string",
+              "pattern": "^\\d{4}$",
+              "description": "4-digit SOC 2020 occupation code from the CoS"
+            },
+            "description": {
+              "type": "string"
+            },
+            "startDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "endDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "grossAnnualSalaryGbp": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Amount in pounds sterling (GBP), no currency symbol"
+            },
+            "hoursPerWeek": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "workAddressIsSponsorAddress": {
+              "default": true,
+              "type": "boolean"
+            },
+            "workAddress": {
+              "type": "object",
+              "properties": {
+                "line1": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "First line of the address"
+                },
+                "line2": {
+                  "type": "string"
+                },
+                "line3": {
+                  "type": "string"
+                },
+                "townOrCity": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "provinceOrState": {
+                  "type": "string"
+                },
+                "postalCode": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2,
+                  "pattern": "^[A-Z]{2}$",
+                  "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+                }
+              },
+              "required": [
+                "line1",
+                "townOrCity",
+                "country"
+              ],
+              "description": "Postal address"
+            },
+            "isOnImmigrationSalaryList": {
+              "default": false,
+              "type": "boolean"
+            },
+            "isNewEntrant": {
+              "default": false,
+              "type": "boolean"
+            },
+            "requiresPhd": {
+              "default": false,
+              "type": "boolean"
+            },
+            "isHealthOrCareWorker": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "title",
+            "socCode",
+            "startDate",
+            "grossAnnualSalaryGbp",
+            "hoursPerWeek"
+          ]
+        },
+        "hasOtherEmploymentInUk": {
+          "default": false,
+          "type": "boolean"
+        },
+        "currentEmployment": {
+          "type": "object",
+          "properties": {
+            "employerName": {
+              "type": "string"
+            },
+            "jobTitle": {
+              "type": "string"
+            },
+            "startDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "isSameAsSponsor": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "employerName",
+            "jobTitle",
+            "startDate"
+          ]
+        }
+      },
+      "required": [
+        "certificateOfSponsorship",
+        "sponsor",
+        "job"
+      ],
+      "description": "Certificate of Sponsorship, sponsor and job details"
+    },
+    "englishLanguage": {
+      "type": "object",
+      "properties": {
+        "howRequirementIsMet": {
+          "type": "string",
+          "enum": [
+            "national-of-majority-english-speaking-country",
+            "degree-taught-in-english",
+            "approved-english-test",
+            "gcse-a-level-or-scottish-qualification",
+            "already-proven-in-previous-application",
+            "exempt"
+          ]
+        },
+        "testDetails": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "description": "e.g. IELTS SELT Consortium, Pearson, LanguageCert, Trinity College London"
+            },
+            "testName": {
+              "type": "string"
+            },
+            "uniqueReferenceNumber": {
+              "type": "string",
+              "description": "Unique Reference Number (URN) or candidate/test report number"
+            },
+            "testDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "cefrLevel": {
+              "default": "B1",
+              "type": "string",
+              "enum": [
+                "A1",
+                "A2",
+                "B1",
+                "B2",
+                "C1",
+                "C2"
+              ]
+            }
+          },
+          "required": [
+            "provider",
+            "testName",
+            "uniqueReferenceNumber",
+            "testDate"
+          ]
+        },
+        "degreeDetails": {
+          "type": "object",
+          "properties": {
+            "qualification": {
+              "type": "string"
+            },
+            "awardingInstitution": {
+              "type": "string"
+            },
+            "countryOfStudy": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            },
+            "completionDate": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+            },
+            "ecctisReferenceNumber": {
+              "description": "Ecctis (formerly UK NARIC) reference if needed",
+              "type": "string"
+            }
+          },
+          "required": [
+            "qualification",
+            "awardingInstitution",
+            "countryOfStudy",
+            "completionDate"
+          ]
+        },
+        "exemptionReason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "howRequirementIsMet"
+      ],
+      "description": "How the B1 English language requirement is met"
+    },
+    "finances": {
+      "type": "object",
+      "properties": {
+        "sponsorCertifiesMaintenance": {
+          "type": "boolean",
+          "description": "True if the sponsor has ticked the maintenance certification on the CoS (A-rated sponsor)"
+        },
+        "hasHeldRequiredFundsFor28Days": {
+          "description": "Required only if the sponsor does not certify maintenance",
+          "type": "boolean"
+        },
+        "availableFundsGbp": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Amount in pounds sterling (GBP), no currency symbol"
+        },
+        "willBeRelyingOnPublicFunds": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sponsorCertifiesMaintenance"
+      ],
+      "description": "Maintenance funds requirement"
+    },
+    "health": {
+      "type": "object",
+      "properties": {
+        "tuberculosisTestRequired": {
+          "default": false,
+          "description": "Required for residents of listed countries",
+          "type": "boolean"
+        },
+        "tuberculosisCertificateNumber": {
+          "type": "string"
+        },
+        "tuberculosisTestDate": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Calendar date in ISO 8601 form (YYYY-MM-DD)"
+        },
+        "hasPaidImmigrationHealthSurcharge": {
+          "default": false,
+          "type": "boolean"
+        },
+        "immigrationHealthSurchargeReference": {
+          "description": "IHS reference number if already paid",
+          "type": "string"
+        }
+      },
+      "description": "Tuberculosis test and Immigration Health Surcharge (IHS)"
+    },
+    "visa": {
+      "type": "object",
+      "properties": {
+        "intendedDateOfTravel": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Planned date of arrival in the UK; the visa start date is based on this"
+        },
+        "lengthOfStayMonths": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 60
+        },
+        "hasUkAddressToLiveAt": {
+          "default": false,
+          "type": "boolean"
+        },
+        "ukAddress": {
+          "type": "object",
+          "properties": {
+            "line1": {
+              "type": "string",
+              "minLength": 1,
+              "description": "First line of the address"
+            },
+            "line2": {
+              "type": "string"
+            },
+            "line3": {
+              "type": "string"
+            },
+            "townOrCity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "provinceOrState": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 2,
+              "pattern": "^[A-Z]{2}$",
+              "description": "ISO 3166-1 alpha-2 country code, e.g. IN, US, NG"
+            }
+          },
+          "required": [
+            "line1",
+            "townOrCity",
+            "country"
+          ],
+          "description": "Postal address"
+        },
+        "priorityService": {
+          "default": "standard",
+          "type": "string",
+          "enum": [
+            "standard",
+            "priority",
+            "super-priority"
+          ]
+        },
+        "biometricsLocationPreference": {
+          "description": "Preferred visa application centre city",
+          "type": "string"
+        }
+      },
+      "required": [
+        "intendedDateOfTravel",
+        "lengthOfStayMonths"
+      ],
+      "description": "Travel plans and service options"
+    },
+    "declaration": {
+      "type": "object",
+      "properties": {
+        "informationIsTrue": {
+          "type": "boolean",
+          "const": true,
+          "description": "Applicant confirms the information is true and complete"
+        },
+        "completedBy": {
+          "default": "representative",
+          "type": "string",
+          "enum": [
+            "applicant",
+            "representative"
+          ]
+        },
+        "representative": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "organisation": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            "telephone": {
+              "type": "string"
+            },
+            "oiscOrSraNumber": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "organisation",
+            "email",
+            "telephone"
+          ]
+        },
+        "authoriseSubmission": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "informationIsTrue"
+      ],
+      "description": "Declaration and submission authorisation"
+    }
+  },
+  "required": [
+    "route",
+    "account",
+    "applicant",
+    "contact",
+    "family",
+    "travelHistory",
+    "characterAndConduct",
+    "sponsorAndJob",
+    "englishLanguage",
+    "finances",
+    "health",
+    "visa",
+    "declaration"
+  ]
+}

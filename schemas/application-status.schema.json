@@ -1,0 +1,322 @@
+{
+  "$id": "https://example.invalid/schemas/application-status.schema.json",
+  "title": "UK visa automation status report",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "reportVersion": {
+      "default": 1,
+      "type": "number",
+      "const": 1
+    },
+    "runId": {
+      "type": "string"
+    },
+    "clientReference": {
+      "type": "string"
+    },
+    "applicationType": {
+      "type": "string",
+      "const": "skilled-worker"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "submitted",
+        "stopped",
+        "needs_attention",
+        "failed"
+      ]
+    },
+    "statusReason": {
+      "type": "string",
+      "description": "Human-readable explanation of the headline status"
+    },
+    "startedAt": {
+      "type": "string"
+    },
+    "finishedAt": {
+      "type": "string"
+    },
+    "durationMs": {
+      "type": "number"
+    },
+    "startUrl": {
+      "type": "string"
+    },
+    "finalUrl": {
+      "type": "string"
+    },
+    "finalPageTitle": {
+      "type": "string"
+    },
+    "stoppedAtStep": {
+      "description": "Step id where the run halted",
+      "type": "string"
+    },
+    "references": {
+      "type": "object",
+      "properties": {
+        "gwf": {
+          "description": "Application reference (GWF number) issued once the account is created",
+          "type": "string"
+        },
+        "uan": {
+          "description": "Unique Application Number issued after submission",
+          "type": "string"
+        },
+        "ihs": {
+          "description": "Immigration Health Surcharge reference",
+          "type": "string"
+        },
+        "paymentReference": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "object",
+      "properties": {
+        "pagesVisited": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "pagesCompleted": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "fieldsFilled": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "percentOfKnownSteps": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "pagesVisited",
+        "pagesCompleted",
+        "fieldsFilled",
+        "percentOfKnownSteps"
+      ],
+      "additionalProperties": false
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "Page heading as seen in the browser"
+          },
+          "url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "failed",
+              "skipped",
+              "stopped"
+            ]
+          },
+          "startedAt": {
+            "type": "string"
+          },
+          "durationMs": {
+            "type": "number"
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "recognised": {
+            "type": "boolean",
+            "description": "false when the page was handled by the generic fallback rather than a known step"
+          },
+          "fieldsFilled": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Question or field label as shown on the page"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "radio",
+                    "checkbox",
+                    "select",
+                    "date",
+                    "textarea",
+                    "password",
+                    "button"
+                  ]
+                },
+                "source": {
+                  "description": "JSON pointer into the input document the value came from",
+                  "type": "string"
+                },
+                "valuePreview": {
+                  "description": "Redacted preview of the value that was entered",
+                  "type": "string"
+                },
+                "method": {
+                  "type": "string",
+                  "enum": [
+                    "selector",
+                    "act",
+                    "skipped"
+                  ],
+                  "description": "selector: filled via observe()+locator (value never sent to the model). act: filled via act()"
+                }
+              },
+              "required": [
+                "label",
+                "kind",
+                "method"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "fieldsNotFound": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Answers the automation wanted to enter but found no matching input for on this page"
+          },
+          "validationErrors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "unansweredQuestions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Questions on the page the automation could not map to input data"
+          },
+          "screenshot": {
+            "description": "Path of the screenshot taken for this page",
+            "type": "string"
+          },
+          "error": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "stack": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "message"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "status",
+          "startedAt",
+          "durationMs",
+          "attempts",
+          "recognised",
+          "fieldsFilled",
+          "fieldsNotFound",
+          "validationErrors",
+          "unansweredQuestions"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "What a human should do next, if anything"
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "inputTokens": {
+          "type": "number"
+        },
+        "outputTokens": {
+          "type": "number"
+        },
+        "inferenceTimeMs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "artifactsDir": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "reportVersion",
+    "runId",
+    "applicationType",
+    "status",
+    "statusReason",
+    "startedAt",
+    "finishedAt",
+    "durationMs",
+    "startUrl",
+    "references",
+    "progress",
+    "steps",
+    "warnings",
+    "nextActions",
+    "model"
+  ],
+  "additionalProperties": false
+}

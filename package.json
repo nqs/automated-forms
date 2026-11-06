@@ -1,0 +1,34 @@
+{
+  "name": "uk-skilled-worker-visa-automation",
+  "version": "0.1.0",
+  "description": "Stagehand-driven automation that fills the UK Skilled Worker visa application from a JSON document and returns a JSON status report",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "bin": {
+    "ukvisa-apply": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "apply": "tsx src/cli.ts",
+    "mock-server": "tsx src/mock/server.ts",
+    "schema:generate": "tsx src/schema/generate.ts",
+    "validate": "tsx src/cli.ts validate"
+  },
+  "dependencies": {
+    "@browserbasehq/stagehand": "^4.4.0",
+    "zod": "4.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "playwright": "^1.65.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.0"
+  }
+}

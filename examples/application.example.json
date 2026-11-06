@@ -1,0 +1,154 @@
+{
+  "$schema": "../schemas/skilled-worker-application.schema.json",
+  "applicationType": "skilled-worker",
+  "clientReference": "MATTER-2026-00481",
+  "route": {
+    "applyingFrom": "outside-uk",
+    "countryOfApplication": "IN",
+    "applicantIsMainApplicant": true,
+    "hasDependantsApplying": false
+  },
+  "account": {
+    "email": "asha.venkataraman@example.com",
+    "password": "CorrectHorse-Battery-42"
+  },
+  "applicant": {
+    "name": { "givenNames": "Asha", "familyName": "Venkataraman" },
+    "hasOtherNames": true,
+    "otherNames": [{ "name": "Asha Krishnan", "reason": "Name before marriage" }],
+    "sex": "female",
+    "relationshipStatus": "married",
+    "dateOfBirth": "1991-07-14",
+    "countryOfBirth": "IN",
+    "placeOfBirth": "Chennai",
+    "nationality": "IN",
+    "hasOtherNationalities": false,
+    "otherNationalities": [],
+    "passport": {
+      "number": "Z8123456",
+      "issuingAuthority": "Chennai",
+      "issueDate": "2021-03-02",
+      "expiryDate": "2031-03-01",
+      "countryOfIssue": "IN",
+      "isBiometric": true
+    }
+  },
+  "contact": {
+    "telephone": { "number": "+91 98400 12345", "type": "mobile", "usedIn": "outside-uk" },
+    "canBeContactedByTelephone": true,
+    "homeAddress": {
+      "line1": "14 Lakeview Apartments",
+      "line2": "Velachery Main Road",
+      "townOrCity": "Chennai",
+      "provinceOrState": "Tamil Nadu",
+      "postalCode": "600042",
+      "country": "IN"
+    },
+    "livedAtHomeAddressSince": "2019-06-01",
+    "homeAddressOwnership": "rent",
+    "correspondenceAddressIsHomeAddress": true,
+    "preferredContactMethod": "email"
+  },
+  "family": {
+    "parents": [
+      { "relationship": "mother", "detailsKnown": true, "name": { "givenNames": "Lakshmi", "familyName": "Krishnan" }, "dateOfBirth": "1963-11-02", "nationality": "IN", "hadSameNationalityAtBirth": true },
+      { "relationship": "father", "detailsKnown": true, "name": { "givenNames": "Raman", "familyName": "Krishnan" }, "dateOfBirth": "1960-04-19", "nationality": "IN", "hadSameNationalityAtBirth": true }
+    ],
+    "partner": {
+      "name": { "givenNames": "Vikram", "familyName": "Venkataraman" },
+      "dateOfBirth": "1989-02-27",
+      "nationality": "IN",
+      "livesWithApplicant": true,
+      "isApplyingToo": false,
+      "relationshipStartDate": "2018-12-09"
+    },
+    "children": []
+  },
+  "travelHistory": {
+    "previousUkAddresses": [],
+    "hasVisitedUkInLast10Years": true,
+    "ukVisits": [{ "reason": "Business meetings", "arrivalDate": "2023-05-08", "departureDate": "2023-05-19" }],
+    "hasBeenIssuedUkVisaBefore": true,
+    "previousUkVisaDetails": [{ "type": "Standard Visitor", "issueDate": "2023-04-20" }],
+    "hasUkNationalInsuranceNumber": false,
+    "hasVisitedOtherCountriesInLast10Years": true,
+    "otherCountryVisits": [{ "country": "SG", "reason": "Holiday", "arrivalDate": "2022-12-20", "departureDate": "2022-12-28" }],
+    "hasAppliedForUkVisaAndBeenRefused": false,
+    "hasBeenRefusedVisaForAnyCountry": false,
+    "hasBeenRefusedEntryToAnyCountry": false,
+    "hasBeenDeportedOrRemoved": false,
+    "hasOverstayedOrBreachedConditions": false
+  },
+  "characterAndConduct": {
+    "hasCriminalConvictions": false,
+    "convictions": [],
+    "hasPendingProsecutions": false,
+    "hasBeenInvolvedInWarCrimes": false,
+    "hasBeenInvolvedInTerrorism": false,
+    "hasExpressedExtremistViews": false,
+    "hasBeenInvolvedInOrganisedCrime": false,
+    "hasWorkedForSecurityOrIntelligenceServices": false,
+    "hasOtherInformationToDeclare": false
+  },
+  "sponsorAndJob": {
+    "certificateOfSponsorship": { "referenceNumber": "C2G4X7K9L1M", "issueDate": "2026-10-21" },
+    "sponsor": {
+      "name": "Northwind Analytics Ltd",
+      "licenceNumber": "ABCDE12345",
+      "address": { "line1": "3 Exchange Quay", "townOrCity": "Manchester", "postalCode": "M5 3EQ", "country": "GB" },
+      "contactName": "Jordan Hale",
+      "contactEmail": "hr@northwind-analytics.example.com"
+    },
+    "job": {
+      "title": "Senior Software Engineer",
+      "socCode": "2134",
+      "startDate": "2027-01-11",
+      "grossAnnualSalaryGbp": 62000,
+      "hoursPerWeek": 37.5,
+      "workAddressIsSponsorAddress": true,
+      "isOnImmigrationSalaryList": false,
+      "isNewEntrant": false,
+      "requiresPhd": false,
+      "isHealthOrCareWorker": false
+    },
+    "hasOtherEmploymentInUk": false
+  },
+  "englishLanguage": {
+    "howRequirementIsMet": "approved-english-test",
+    "testDetails": {
+      "provider": "IELTS SELT Consortium",
+      "testName": "IELTS for UKVI (Academic)",
+      "uniqueReferenceNumber": "24IN000123456A",
+      "testDate": "2026-08-15",
+      "cefrLevel": "B2"
+    }
+  },
+  "finances": {
+    "sponsorCertifiesMaintenance": true,
+    "willBeRelyingOnPublicFunds": false
+  },
+  "health": {
+    "tuberculosisTestRequired": true,
+    "tuberculosisCertificateNumber": "TB-IN-2026-778812",
+    "tuberculosisTestDate": "2026-10-02",
+    "hasPaidImmigrationHealthSurcharge": false
+  },
+  "visa": {
+    "intendedDateOfTravel": "2027-01-04",
+    "lengthOfStayMonths": 36,
+    "hasUkAddressToLiveAt": false,
+    "priorityService": "standard"
+  },
+  "declaration": {
+    "informationIsTrue": true,
+    "completedBy": "representative",
+    "representative": {
+      "name": "Nicola Stewart",
+      "organisation": "Example Immigration Advisers LLP",
+      "email": "n.stewart@example-advisers.com",
+      "telephone": "+44 20 7946 0000",
+      "oiscOrSraNumber": "F200100001"
+    },
+    "authoriseSubmission": false
+  }
+}

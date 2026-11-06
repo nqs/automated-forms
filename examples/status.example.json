@@ -1,0 +1,1345 @@
+{
+  "reportVersion": 1,
+  "runId": "6f1c2b2e-9a7e-4a7d-9d7b-5c1a1b3e2f10",
+  "clientReference": "MATTER-2026-00481",
+  "applicationType": "skilled-worker",
+  "status": "stopped",
+  "statusReason": "Reached the payment page. Payment is not automated.",
+  "startedAt": "2026-11-06T21:57:37.748Z",
+  "finishedAt": "2026-11-06T21:57:44.783Z",
+  "durationMs": 7035,
+  "startUrl": "https://www.gov.uk/skilled-worker-visa/apply",
+  "finalUrl": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/pay",
+  "finalPageTitle": "Pay for your application",
+  "stoppedAtStep": "payment",
+  "references": {
+    "gwf": "GWF493648131"
+  },
+  "progress": {
+    "pagesVisited": 42,
+    "pagesCompleted": 41,
+    "fieldsFilled": 99,
+    "percentOfKnownSteps": 55
+  },
+  "steps": [
+    {
+      "id": "before-you-start",
+      "title": "Apply for a Skilled Worker visa",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/start",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:37.833Z",
+      "durationMs": 61,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "applying-from-country",
+      "title": "Where are you applying from?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/country",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:37.948Z",
+      "durationMs": 94,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Where are you applying from?",
+          "kind": "select",
+          "source": "/route/countryOfApplication",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "has-current-passport",
+      "title": "Do you have a current passport?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/passport-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.096Z",
+      "durationMs": 108,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Do you have a current passport?",
+          "kind": "radio",
+          "source": "/applicant/passport",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "nationality-select",
+      "title": "Select your nationality",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/nationality",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.259Z",
+      "durationMs": 80,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Nationality",
+          "kind": "select",
+          "source": "/applicant/nationality",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "email",
+      "title": "Email address",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/email",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.392Z",
+      "durationMs": 91,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Email address",
+          "kind": "text",
+          "source": "/account/email",
+          "valuePreview": "••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Confirm email address",
+          "kind": "text",
+          "source": "/account/email",
+          "valuePreview": "••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "password",
+      "title": "Create a password",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/password",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.539Z",
+      "durationMs": 93,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Password",
+          "kind": "password",
+          "source": "/account/password",
+          "valuePreview": "••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Confirm password",
+          "kind": "password",
+          "source": "/account/password",
+          "valuePreview": "••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "application-reference",
+      "title": "Your application reference number",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/reference",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.686Z",
+      "durationMs": 56,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "telephone",
+      "title": "Telephone number",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/telephone",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:38.797Z",
+      "durationMs": 189,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Telephone number",
+          "kind": "text",
+          "source": "/contact/telephone/number",
+          "valuePreview": "+9••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "What type of telephone number is this?",
+          "kind": "radio",
+          "source": "/contact/telephone/type",
+          "valuePreview": "Mobile",
+          "method": "selector"
+        },
+        {
+          "label": "Where do you use this telephone number?",
+          "kind": "radio",
+          "source": "/contact/telephone/usedIn",
+          "valuePreview": "For use outside the UK",
+          "method": "selector"
+        },
+        {
+          "label": "Can we contact you by telephone?",
+          "kind": "radio",
+          "source": "/contact/canBeContactedByTelephone",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "home-address",
+      "title": "Where do you live?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/address",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.039Z",
+      "durationMs": 119,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Address line 1",
+          "kind": "text",
+          "source": "/contact/homeAddress/line1",
+          "valuePreview": "14••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Address line 2",
+          "kind": "text",
+          "source": "/contact/homeAddress/line2",
+          "valuePreview": "Ve••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Town or city",
+          "kind": "text",
+          "source": "/contact/homeAddress/townOrCity",
+          "valuePreview": "Ch•••••",
+          "method": "selector"
+        },
+        {
+          "label": "Province, region or state",
+          "kind": "text",
+          "source": "/contact/homeAddress/provinceOrState",
+          "valuePreview": "Ta••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Postal code",
+          "kind": "text",
+          "source": "/contact/homeAddress/postalCode",
+          "valuePreview": "60••••",
+          "method": "selector"
+        },
+        {
+          "label": "Country",
+          "kind": "select",
+          "source": "/contact/homeAddress/country",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "unknown-9",
+      "title": "About your home address",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/address-about",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.212Z",
+      "durationMs": 141,
+      "attempts": 1,
+      "recognised": false,
+      "fieldsFilled": [
+        {
+          "label": "When did you start living at this address?",
+          "kind": "date",
+          "source": "/contact/livedAtHomeAddressSince",
+          "valuePreview": "2019-06-01",
+          "method": "selector"
+        },
+        {
+          "label": "What is the ownership status of your home?",
+          "kind": "radio",
+          "source": "/contact/homeAddressOwnership",
+          "valuePreview": "I rent it",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "correspondence-address-question",
+      "title": "Is this also your correspondence address?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/correspondence",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.407Z",
+      "durationMs": 95,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Is this address also your correspondence address?",
+          "kind": "radio",
+          "source": "/contact/correspondenceAddressIsHomeAddress",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "name",
+      "title": "Your name",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/name",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.556Z",
+      "durationMs": 86,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Given name(s)",
+          "kind": "text",
+          "source": "/applicant/name/givenNames",
+          "valuePreview": "As••",
+          "method": "selector"
+        },
+        {
+          "label": "Family name",
+          "kind": "text",
+          "source": "/applicant/name/familyName",
+          "valuePreview": "Ve••••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "other-names-question",
+      "title": "Have you ever been known by any other names?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/other-names-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.696Z",
+      "durationMs": 108,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Have you ever been known by any other names?",
+          "kind": "radio",
+          "source": "/applicant/hasOtherNames",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "other-name-details",
+      "title": "Enter your other name",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/other-name",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.857Z",
+      "durationMs": 87,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Other name",
+          "kind": "text",
+          "source": "/applicant/otherNames/0/name",
+          "valuePreview": "As•••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Why did you use this name?",
+          "kind": "textarea",
+          "source": "/applicant/otherNames/0/reason",
+          "valuePreview": "Na••••••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "add-another",
+      "title": "You have added 1 other name(s). Do you need to add another?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/other-name-more",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:39.998Z",
+      "durationMs": 105,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "sex",
+      "title": "What is your sex, as shown in your passport?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sex",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.157Z",
+      "durationMs": 96,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "What is your sex, as shown in your passport?",
+          "kind": "radio",
+          "source": "/applicant/sex",
+          "valuePreview": "Female",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "relationship-status",
+      "title": "What is your relationship status?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/relationship",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.306Z",
+      "durationMs": 96,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "What is your relationship status?",
+          "kind": "radio",
+          "source": "/applicant/relationshipStatus",
+          "valuePreview": "Married",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "date-of-birth",
+      "title": "What is your date of birth?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/dob",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.455Z",
+      "durationMs": 94,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Date of birth",
+          "kind": "date",
+          "source": "/applicant/dateOfBirth",
+          "valuePreview": "1991-07-14",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "place-of-birth",
+      "title": "Where were you born?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/pob",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.603Z",
+      "durationMs": 84,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Place of birth",
+          "kind": "text",
+          "source": "/applicant/placeOfBirth",
+          "valuePreview": "Ch•••••",
+          "method": "selector"
+        },
+        {
+          "label": "Country of birth",
+          "kind": "select",
+          "source": "/applicant/countryOfBirth",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "other-nationalities-question",
+      "title": "Do you hold any other nationalities?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/other-nat-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.741Z",
+      "durationMs": 94,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Do you currently hold, or have you ever held, any other nationality or citizenship?",
+          "kind": "radio",
+          "source": "/applicant/hasOtherNationalities",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "passport-details",
+      "title": "Your passport",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/passport",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:40.888Z",
+      "durationMs": 146,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Passport number",
+          "kind": "text",
+          "source": "/applicant/passport/number",
+          "valuePreview": "Z8••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Issuing authority",
+          "kind": "text",
+          "source": "/applicant/passport/issuingAuthority",
+          "valuePreview": "Ch•••••",
+          "method": "selector"
+        },
+        {
+          "label": "Issue date",
+          "kind": "date",
+          "source": "/applicant/passport/issueDate",
+          "valuePreview": "2021-03-02",
+          "method": "selector"
+        },
+        {
+          "label": "Expiry date",
+          "kind": "date",
+          "source": "/applicant/passport/expiryDate",
+          "valuePreview": "2031-03-01",
+          "method": "selector"
+        },
+        {
+          "label": "Country of issue",
+          "kind": "select",
+          "source": "/applicant/passport/countryOfIssue",
+          "valuePreview": "India",
+          "method": "selector"
+        },
+        {
+          "label": "Is this a biometric passport?",
+          "kind": "radio",
+          "source": "/applicant/passport/isBiometric",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "parent-details",
+      "title": "Your mother",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/mother",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.088Z",
+      "durationMs": 111,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Mother's given name(s)",
+          "kind": "text",
+          "source": "/family/parents/0/name/givenNames",
+          "valuePreview": "La•••••",
+          "method": "selector"
+        },
+        {
+          "label": "Mother's family name",
+          "kind": "text",
+          "source": "/family/parents/0/name/familyName",
+          "valuePreview": "Kr••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Mother's date of birth",
+          "kind": "date",
+          "source": "/family/parents/0/dateOfBirth",
+          "valuePreview": "1963-11-02",
+          "method": "selector"
+        },
+        {
+          "label": "Mother's nationality",
+          "kind": "select",
+          "source": "/family/parents/0/nationality",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Did your mother have the same nationality at birth?"
+      ]
+    },
+    {
+      "id": "parent-details",
+      "title": "Your father",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/father",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.252Z",
+      "durationMs": 106,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Father's given name(s)",
+          "kind": "text",
+          "source": "/family/parents/1/name/givenNames",
+          "valuePreview": "Ra•••",
+          "method": "selector"
+        },
+        {
+          "label": "Father's family name",
+          "kind": "text",
+          "source": "/family/parents/1/name/familyName",
+          "valuePreview": "Kr••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Father's date of birth",
+          "kind": "date",
+          "source": "/family/parents/1/dateOfBirth",
+          "valuePreview": "1960-04-19",
+          "method": "selector"
+        },
+        {
+          "label": "Father's nationality",
+          "kind": "select",
+          "source": "/family/parents/1/nationality",
+          "valuePreview": "India",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Did your father have the same nationality at birth?"
+      ]
+    },
+    {
+      "id": "partner-question",
+      "title": "Do you have a partner?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/partner-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.410Z",
+      "durationMs": 108,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Do you have a partner?",
+          "kind": "radio",
+          "source": "/family/partner",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "partner-details",
+      "title": "Enter your partner's details",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/partner",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.571Z",
+      "durationMs": 181,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Partner's given name(s)",
+          "kind": "text",
+          "source": "/family/partner/name/givenNames",
+          "valuePreview": "Vi••••",
+          "method": "selector"
+        },
+        {
+          "label": "Partner's family name",
+          "kind": "text",
+          "source": "/family/partner/name/familyName",
+          "valuePreview": "Ve••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Partner's date of birth",
+          "kind": "date",
+          "source": "/family/partner/dateOfBirth",
+          "valuePreview": "1989-02-27",
+          "method": "selector"
+        },
+        {
+          "label": "Partner's nationality",
+          "kind": "select",
+          "source": "/family/partner/nationality",
+          "valuePreview": "India",
+          "method": "selector"
+        },
+        {
+          "label": "Does your partner live with you?",
+          "kind": "radio",
+          "source": "/family/partner/livesWithApplicant",
+          "valuePreview": "Yes",
+          "method": "selector"
+        },
+        {
+          "label": "Is your partner applying with you?",
+          "kind": "radio",
+          "source": "/family/partner/isApplyingToo",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "When did your relationship start?"
+      ]
+    },
+    {
+      "id": "children-question",
+      "title": "Do you have any children?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/children-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.805Z",
+      "durationMs": 98,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Do you have any children?",
+          "kind": "radio",
+          "source": "/family/children",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "uk-travel-question",
+      "title": "Have you been to the UK in the last 10 years?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/uk-travel-q",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:41.955Z",
+      "durationMs": 96,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Have you been to the UK in the last 10 years?",
+          "kind": "radio",
+          "source": "/travelHistory/hasVisitedUkInLast10Years",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "uk-visit-details",
+      "title": "Enter details of your visit to the UK",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/uk-visit",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:42.104Z",
+      "durationMs": 110,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Reason for visit",
+          "kind": "text",
+          "source": "/travelHistory/ukVisits/0/reason",
+          "valuePreview": "Bu••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Date you arrived in the UK",
+          "kind": "date",
+          "source": "/travelHistory/ukVisits/0/arrivalDate",
+          "valuePreview": "2023-05-08",
+          "method": "selector"
+        },
+        {
+          "label": "Date you left the UK",
+          "kind": "date",
+          "source": "/travelHistory/ukVisits/0/departureDate",
+          "valuePreview": "2023-05-19",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "add-another",
+      "title": "You have added 1 visit(s). Do you need to add another?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/uk-visit-more",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:42.268Z",
+      "durationMs": 99,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "immigration-history",
+      "title": "Immigration history",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/immigration",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:42.419Z",
+      "durationMs": 231,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Have you ever been refused a visa for the UK?",
+          "kind": "radio",
+          "source": "/travelHistory/hasAppliedForUkVisaAndBeenRefused",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been refused a visa for any other country?",
+          "kind": "radio",
+          "source": "/travelHistory/hasBeenRefusedVisaForAnyCountry",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been refused entry at the border to the UK or any other country?",
+          "kind": "radio",
+          "source": "/travelHistory/hasBeenRefusedEntryToAnyCountry",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been deported, removed or otherwise required to leave any country?",
+          "kind": "radio",
+          "source": "/travelHistory/hasBeenDeportedOrRemoved",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever overstayed or breached the conditions of a visa?",
+          "kind": "radio",
+          "source": "/travelHistory/hasOverstayedOrBreachedConditions",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "character-and-conduct",
+      "title": "Convictions and other penalties",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/character",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:42.702Z",
+      "durationMs": 334,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Have you ever had a criminal conviction, including traffic offences?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasCriminalConvictions",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Are there any pending prosecutions against you?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasPendingProsecutions",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been involved in, supported or encouraged war crimes, crimes against humanity or genocide?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasBeenInvolvedInWarCrimes",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been involved in, supported or encouraged terrorist activities?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasBeenInvolvedInTerrorism",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever expressed views that justify or glorify terrorist violence or that may encourage others to commit terrorist or other serious criminal acts?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasExpressedExtremistViews",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever been involved in organised crime?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasBeenInvolvedInOrganisedCrime",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Have you ever worked for the security, intelligence or armed forces of any country?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasWorkedForSecurityOrIntelligenceServices",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Is there any other information you would like us to know?",
+          "kind": "radio",
+          "source": "/characterAndConduct/hasOtherInformationToDeclare",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "certificate-of-sponsorship",
+      "title": "Certificate of Sponsorship",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/cos",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.091Z",
+      "durationMs": 80,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Certificate of Sponsorship reference number",
+          "kind": "text",
+          "source": "/sponsorAndJob/certificateOfSponsorship/referenceNumber",
+          "valuePreview": "C2•••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Date the certificate was issued"
+      ]
+    },
+    {
+      "id": "sponsor-details",
+      "title": "Your sponsor",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/sponsor",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.224Z",
+      "durationMs": 124,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Sponsor name",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/name",
+          "valuePreview": "No••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor licence number",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/licenceNumber",
+          "valuePreview": "AB••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor Address line 1",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/address/line1",
+          "valuePreview": "3 ••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor Town or city",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/address/townOrCity",
+          "valuePreview": "Ma••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor Postal code",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/address/postalCode",
+          "valuePreview": "M5••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor Country",
+          "kind": "select",
+          "source": "/sponsorAndJob/sponsor/address/country",
+          "valuePreview": "United Kingdom",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor contact name",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/contactName",
+          "valuePreview": "Jo•••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Sponsor email address",
+          "kind": "text",
+          "source": "/sponsorAndJob/sponsor/contactEmail",
+          "valuePreview": "hr••••••••••••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "job-details",
+      "title": "Your job",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/job",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.401Z",
+      "durationMs": 99,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Job title",
+          "kind": "text",
+          "source": "/sponsorAndJob/job/title",
+          "valuePreview": "Se••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Occupation code",
+          "kind": "text",
+          "source": "/sponsorAndJob/job/socCode",
+          "valuePreview": "21••",
+          "method": "selector"
+        },
+        {
+          "label": "Job start date",
+          "kind": "date",
+          "source": "/sponsorAndJob/job/startDate",
+          "valuePreview": "2027-01-11",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "salary",
+      "title": "Salary",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/salary",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.554Z",
+      "durationMs": 179,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Gross annual salary",
+          "kind": "text",
+          "source": "/sponsorAndJob/job/grossAnnualSalaryGbp",
+          "valuePreview": "62•••",
+          "method": "selector"
+        },
+        {
+          "label": "Hours per week",
+          "kind": "text",
+          "source": "/sponsorAndJob/job/hoursPerWeek",
+          "valuePreview": "37••",
+          "method": "selector"
+        },
+        {
+          "label": "Is the job on the Immigration Salary List?",
+          "kind": "radio",
+          "source": "/sponsorAndJob/job/isOnImmigrationSalaryList",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Are you a new entrant to the labour market?",
+          "kind": "radio",
+          "source": "/sponsorAndJob/job/isNewEntrant",
+          "valuePreview": "No",
+          "method": "selector"
+        },
+        {
+          "label": "Does the job require a PhD?",
+          "kind": "radio",
+          "source": "/sponsorAndJob/job/requiresPhd",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "english-language",
+      "title": "English language requirement",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/english",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.786Z",
+      "durationMs": 144,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "How do you meet the English language requirement?",
+          "kind": "radio",
+          "source": "/englishLanguage/howRequirementIsMet",
+          "valuePreview": "I have passed an approved English language test",
+          "method": "selector"
+        },
+        {
+          "label": "Test provider",
+          "kind": "text",
+          "source": "/englishLanguage/testDetails/provider",
+          "valuePreview": "IE••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Test name",
+          "kind": "text",
+          "source": "/englishLanguage/testDetails/testName",
+          "valuePreview": "IE••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Unique reference number",
+          "kind": "text",
+          "source": "/englishLanguage/testDetails/uniqueReferenceNumber",
+          "valuePreview": "24••••••••••••",
+          "method": "selector"
+        },
+        {
+          "label": "Test date",
+          "kind": "date",
+          "source": "/englishLanguage/testDetails/testDate",
+          "valuePreview": "2026-08-15",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Level achieved"
+      ]
+    },
+    {
+      "id": "maintenance-funds",
+      "title": "Maintenance funds",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/funds",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:43.983Z",
+      "durationMs": 133,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Has your sponsor certified that they will maintain and accommodate you?",
+          "kind": "radio",
+          "source": "/finances/sponsorCertifiesMaintenance",
+          "valuePreview": "Yes",
+          "method": "selector"
+        },
+        {
+          "label": "Will you be relying on public funds?",
+          "kind": "radio",
+          "source": "/finances/willBeRelyingOnPublicFunds",
+          "valuePreview": "No",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "tuberculosis",
+      "title": "Tuberculosis test",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/tb",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:44.169Z",
+      "durationMs": 102,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Have you had a tuberculosis test?",
+          "kind": "radio",
+          "source": "/health/tuberculosisTestRequired",
+          "valuePreview": "Yes",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Tuberculosis certificate number",
+        "Date of the test"
+      ]
+    },
+    {
+      "id": "travel-plans",
+      "title": "When do you plan to arrive in the UK?",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/travel",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:44.324Z",
+      "durationMs": 95,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "When do you plan to arrive in the UK?",
+          "kind": "date",
+          "source": "/visa/intendedDateOfTravel",
+          "valuePreview": "2027-01-04",
+          "method": "selector"
+        },
+        {
+          "label": "How long do you plan to stay in the UK?",
+          "kind": "text",
+          "source": "/visa/lengthOfStayMonths",
+          "valuePreview": "••",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "check-your-answers",
+      "title": "Check your answers",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/check",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:44.472Z",
+      "durationMs": 55,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    },
+    {
+      "id": "declaration",
+      "title": "Declaration",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/declaration",
+      "status": "completed",
+      "startedAt": "2026-11-06T21:57:44.580Z",
+      "durationMs": 150,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [
+        {
+          "label": "Declaration",
+          "kind": "checkbox",
+          "source": "/declaration/informationIsTrue",
+          "valuePreview": "I confirm that the information I have given is true and complete",
+          "method": "selector"
+        },
+        {
+          "label": "Who is completing this form?",
+          "kind": "radio",
+          "source": "/declaration/completedBy",
+          "valuePreview": "Someone else on behalf of the applicant",
+          "method": "selector"
+        }
+      ],
+      "validationErrors": [],
+      "unansweredQuestions": [
+        "Representative's name",
+        "Organisation",
+        "Representative's email address",
+        "Representative's telephone number",
+        "OISC or SRA registration number"
+      ]
+    },
+    {
+      "id": "payment",
+      "title": "Pay for your application",
+      "url": "https://apply-to-visit-or-stay-in-the-uk.homeoffice.gov.uk/pay",
+      "status": "stopped",
+      "startedAt": "2026-11-06T21:57:44.783Z",
+      "durationMs": 0,
+      "attempts": 1,
+      "recognised": true,
+      "fieldsFilled": [],
+      "validationErrors": [],
+      "unansweredQuestions": []
+    }
+  ],
+  "warnings": [
+    "Page \"About your home address\" was handled by the generic fallback (When did you start living at this address? ← home-address-details, What is the ownership status of your home? ← home-address-details); review it",
+    "parent-details: could not fill \"Did your mother have the same nationality at birth?\": act() failed selecting \"Yes\" for \"Did your mother have the same nationality at birth?\": No radio option \"Yes\" found",
+    "parent-details: could not fill \"Did your father have the same nationality at birth?\": act() failed selecting \"Yes\" for \"Did your father have the same nationality at birth?\": No radio option \"Yes\" found",
+    "partner-details: could not fill \"When did your relationship start?\": act() failed for date \"When did your relationship start?\": Heuristic driver cannot perform: for the date field labelled \"When did your relationship start?\", type %day% into Day, %month% into Month and %year% into Year",
+    "certificate-of-sponsorship: could not fill \"Date the certificate was issued\": act() failed for date \"Date the certificate was issued\": Heuristic driver cannot perform: for the date field labelled \"Date the certificate was issued\", type %day% into Day, %month% into Month and %year% into Year",
+    "english-language: could not fill \"Level achieved\": act() failed selecting \"B2\" for \"Level achieved\": No radio option \"B2\" found",
+    "tuberculosis: could not fill \"Tuberculosis certificate number\": act() failed for \"Tuberculosis certificate number\": No field \"Tuberculosis certificate number\"",
+    "tuberculosis: could not fill \"Date of the test\": act() failed for date \"Date of the test\": Heuristic driver cannot perform: for the date field labelled \"Date of the test\", type %day% into Day, %month% into Month and %year% into Year",
+    "declaration: could not fill \"Representative's name\": act() failed for \"Representative's name\": No field \"Representative's name\"",
+    "declaration: could not fill \"Organisation\": act() failed for \"Organisation\": No field \"Organisation\"",
+    "declaration: could not fill \"Representative's email address\": act() failed for \"Representative's email address\": No field \"Representative's email address\"",
+    "declaration: could not fill \"Representative's telephone number\": act() failed for \"Representative's telephone number\": No field \"Representative's telephone number\"",
+    "declaration: could not fill \"OISC or SRA registration number\": act() failed for \"OISC or SRA registration number\": No field \"OISC or SRA registration number\""
+  ],
+  "nextActions": [
+    "Sign in with the GWF reference GWF493648131 and complete payment manually"
+  ],
+  "model": {
+    "name": "anthropic/claude-opus-5-5",
+    "inputTokens": 412380,
+    "outputTokens": 19844,
+    "inferenceTimeMs": 388210
+  },
+  "artifactsDir": "runs/2026-11-06T22-00-00-000Z"
+}
